@@ -15,6 +15,7 @@ class gogs::params {
   $enable_gzip     = false
   $domain          = 'localhost'
   $port            = 6000
+  $root_url        = "http://${domain}:${port}/"
   $db_type         = 'postgres'
   $db_host         = 'localhost'
   $db_port         = 5432

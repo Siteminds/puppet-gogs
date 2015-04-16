@@ -32,6 +32,9 @@
 # [*port*]
 #   The port the Gogs service should listen on. Default: 6000.
 #
+# [*root_url*]
+#   The URL for accessing the Gogs service, set if behind a reverse proxy. Default: http://{domain}:{port}/
+#
 # [*enable_gzip*]
 #   Boolean indicating wheter or not (http) gzip compression should be used. Default: false.
 #
@@ -78,6 +81,7 @@ class gogs (
   $repository_root = $gogs::params::repository_root,
   $domain = $gogs::params::domain,
   $port = $gogs::params::port,
+  $root_url = $gogs::params::root_url,
   $enable_gzip = $gogs::params::enable_gzip,
   $db_type = $gogs::params::db_type,
   $db_host = $gogs::params::db_host,

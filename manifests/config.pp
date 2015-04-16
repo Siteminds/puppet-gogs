@@ -10,6 +10,7 @@ class gogs::config(
   $enable_gzip = $gogs::enable_gzip,
   $domain = $gogs::domain,
   $port = $gogs::port,
+  $root_url = $gogs::root_url,
   $enable_gzip = $gogs::enable_gzip,
   $db_type = $gogs::db_type,
   $db_host = $gogs::db_host,
