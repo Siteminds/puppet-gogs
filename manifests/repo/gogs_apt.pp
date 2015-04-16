@@ -21,7 +21,7 @@ class gogs::repo::gogs_apt(
 
   # Make sure repo is configured before package is installed
   Apt::Source['deb.packager.io-gogs'] -> Package<|
-    tag == 'gogs' 
+    tag == 'gogs'
     and title != 'apt-transport-https'
   |>
 }
