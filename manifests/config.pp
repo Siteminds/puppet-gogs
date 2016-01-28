@@ -35,7 +35,9 @@ class gogs::config(
 ) inherits gogs::params {
 
   user { $owner:
-    ensure  => present,
+    ensure     => present,
+    managehome => true,
+    require    => Group[$group],
   }
 
   group { $group:
@@ -43,9 +45,10 @@ class gogs::config(
   }
 
   file { $repository_root:
-    ensure => 'directory',
-    owner  => $owner,
-    group  => $group,
+    ensure  => 'directory',
+    owner   => $owner,
+    group   => $group,
+    require => User[$owner]
   }
 
   file { '/etc/gogs/conf/app.ini':
@@ -53,6 +56,7 @@ class gogs::config(
     content => template('gogs/app.ini.erb'),
     owner   => $owner,
     group   => $group,
+    require => Package['gogs']
   }
 
   file { '/etc/init.d/gogs':

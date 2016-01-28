@@ -115,11 +115,9 @@ class gogs (
   # Parameter validation
   validate_bool($install_repo)
 
-  anchor { 'gogs::begin': } ->
-  class  { '::gogs::repo': } ->
-  class  { '::gogs::install': } ->
-  class  { '::gogs::config': } ~>
-  class  { '::gogs::service': } ->
-  anchor { 'gogs::end': }
+  include ::gogs::repo
+  include ::gogs::install
+  include ::gogs::config
+  include ::gogs::service
 
 }
