@@ -13,5 +13,6 @@ class gogs::service
     ensure     => $service_ensure,
     hasrestart => true,
     enable     => true,
+    require    => Package['gogs']
   }
 }
