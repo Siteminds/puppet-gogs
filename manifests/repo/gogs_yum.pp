@@ -8,8 +8,6 @@ class gogs::repo::gogs_yum(
     enabled  => 1,
     gpgcheck => 1,
     gpgkey   => 'https://rpm.packager.io/key',
+    before   => Package['gogs'],
   }
-
-  # Ensure the repository is configured before package is installed
-  Yumrepo['rpm.packager.io-gogs'] -> Package<|tag == 'gogs'|>
 }
