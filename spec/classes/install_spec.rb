@@ -17,8 +17,9 @@ describe 'gogs::install', :type => :class do
             :lsbdistcodename => 'trusty'
           }
         end
-        it { is_expected.to contain_package('g0gz')
+        it { is_expected.to contain_package('gogs')
                .with_ensure('1.2.3.4')
+               .with_name('g0gz')
            }
       end
     end
