@@ -1,6 +1,5 @@
 # PRIVATE CLASS: do not use directly
-class gogs::repo::gogs_apt(
-) inherits gogs::repo {
+class gogs::repo::gogs_apt {
 
   include ::apt
 
@@ -16,14 +15,7 @@ class gogs::repo::gogs_apt(
         source => 'https://deb.packager.io/key',
     },
     include_src => false,
-    require     => [
-      Package['apt-transport-https']
-    ]
+    require     => Package['apt-transport-https'],
+    before      => Package['gogs']
   }
-
-  # Make sure repo is configured before package is installed
-  Apt::Source['deb.packager.io-gogs'] -> Package<|
-    tag == 'gogs'
-    and title != 'apt-transport-https'
-  |>
 }
