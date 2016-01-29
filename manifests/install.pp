@@ -8,7 +8,7 @@ class gogs::install(
 ) {
 
   package { 'gogs':
-    name   => $package_name,
     ensure => $package_ensure,
+    name   => $package_name,
   }
 }
