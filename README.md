@@ -127,13 +127,15 @@ to generate a password hash:
            "fmt"
            "os"
            "crypto/sha256"
-           "github.com/gogits/gogs/modules/base"
+           "golang.org/x/crypto/pbkdf2"
     )
 
     func main() {
-       newPasswd := base.PBKDF2([]byte(os.Args[1]), []byte(os.Args[2]), 10000, 50, sha256.New)
+       newPasswd := pbkdf2.Key([]byte(os.Args[1]), []byte(os.Args[2]), 10000, 50, sha256.New)
        fmt.Printf("%x\n", newPasswd)
     }
+
+Save it as ```gogspaswd.go``` and run it with ```go run gogspasswd.go <password> <salt>```.
 
 This simple program takes the password as the first argument and the salt value as the second
 argument. This code is an actual copy of the Gogs code responsible for inserting/updating
